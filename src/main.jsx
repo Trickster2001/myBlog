@@ -12,12 +12,17 @@ import Post from './pages/Post.jsx'
 import AllPosts from './pages/AllPosts.jsx'
 import EditPost from './pages/EditPost.jsx'
 import AuthLayout from './components/AuthLayout.jsx'
+import Home from './pages/Home.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: <Home />
+      },
     {
         path: "/login",
         element: (

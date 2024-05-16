@@ -32,13 +32,14 @@ const SignUp = () => {
   }
 
   return (
-    <div className='bg-gray-400 h-screen flex justify-center'>
-      <div className='w-1/2 bg-white h-fit mt-20 p-4 pl-5 rounded-lg'>
+    <div className=' h-[80vh] flex justify-center'>
+      <div className='border shadow-2xl w-[80vw] sm:w-[60vw] md:w-[40vw] lg:w-[35vw] bg-white h-[62vh] mt-20 p-4 pl-5 rounded-lg'>
         <h1 className='text-center text-2xl font-semibold p-3 underline'>Sign Up Form here</h1>
         
       {error && <p>{error}</p>}
         <form onSubmit={handleSubmit(signUp)} >
           <Input
+          className="mb-2"
             label="Full name"
             placeholder="Enter Your Name"
             type="text"
@@ -47,6 +48,7 @@ const SignUp = () => {
             })}
           />
           <Input
+          className="mb-2"
             label="Email"
             placeholder="Enter your email"
             type="email"
@@ -59,6 +61,7 @@ const SignUp = () => {
             })}
           />
           <Input 
+          className="mb-2"
             label="password"
             placeholder="Enter your password"
             type="password"
@@ -66,7 +69,7 @@ const SignUp = () => {
               required: true
             })}
           />
-          <Button type='submit' className='text-white w-full mt-4 mb-2 p-2 bg-gray-500'>SignUp</Button>
+          <Button type='submit' className='text-white w-full mt-4 mb-2 p-2 bg-gray-500 rounded-lg'>SignUp</Button>
           <div className=''>
           <p className='text-center text-sm font-semibold text-gray-500'>Already have an account? 
         <Link className='text-red-500' to={"/login"}> SignIn</Link>

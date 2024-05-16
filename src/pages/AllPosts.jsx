@@ -11,12 +11,13 @@ const AllPosts = () => {
         setPosts(posts.documents)
       }
     })
-    console.log(posts)
+    console.log("posts from all", posts)
   },[])
+
   return (
-    <div className='flex'>
+    <div className='flex flex-wrap justify-center my-2 gap-4'>
       {posts.map((post) => (
-        <div key={post.$id}>
+        <div key={post.$id} className=''>
         <PostCard post={post} />
         </div>
       ))}

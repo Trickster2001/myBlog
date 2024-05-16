@@ -64,21 +64,21 @@ const PostForm = ({post}) => {
     })
   },[watch, slugTransform, setValue])
   return (
-    <div className='bg-gray-300 h-screen'>
-      <form className='flex' onSubmit={handleSubmit(submit)}>
-      <div id="left" className='w-2/3 bg-red-500 p-3'>
+    <div className='p-2 h-screen'>
+      <form className='sm:flex' onSubmit={handleSubmit(submit)}>
+      <div id="left" className=' p-3 w-full sm:w-1/2'>
         <Input
         label="Title"
         type="text"
         placeholder="Enter the tittle"
-        className="m-4 w-fit"
+        className="mb-4"
         {...register("title", {required:true})}
         />
         <Input
         label="slug"
         type="text"
         placeholder="Enter the slug"
-        className="m-4 w-fit"
+        className="mb-4"
         {...register("slug", {required:true})}
         onInput = {(e) => {
           setValue('slug', slugTransform(e.currentTarget.value), {shouldValidate: true});
@@ -86,12 +86,13 @@ const PostForm = ({post}) => {
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
       </div>
-      <div id="right" className='w-1/3 bg-blue-300 p-3'>
+      <div className='hidden sm:block border border-black'></div>
+      <div id="right" className=' p-3 sm:w-1/2'>
       <Input
         label="featured Image"
         type="file"
         placeholder="Enter the tittle"
-        className="m-3 w-fit"
+        className="mb-4"
         accept="image/png, image/jpg, image/jpeg, image/gif"
         {...register("image", {required: !post})}
         />
@@ -106,7 +107,7 @@ const PostForm = ({post}) => {
         )}
         <Select label="status" options={["active", "inactive"]} {...register("status", {required:true})} />
 
-        <Button type='submit' className='bg-gray-500 text-white p-2 px-5 rounded-lg'>Submit</Button>
+        <Button type='submit' className='bg-green-600 text-white p-2 px-5 rounded-lg'>Submit</Button>
       </div>
       </form>
     </div>

@@ -79,7 +79,20 @@ export class Service{
     }
   }
 
-  async getAllPosts(queries=[Query.equal("status", ["active"])]){
+  async getAllPosts([]){
+    try {
+      return await this.databases.listDocuments(
+        conf.databaseId,
+        conf.collectionId,
+        []
+      )
+    } catch (error) {
+      console.log("appwrite getAllPosts ", error);
+      return false;
+    }
+  }
+
+  async getActivePosts(queries=[Query.equal("status", ["active"])]){
     try {
       return await this.databases.listDocuments(
         conf.databaseId,
@@ -132,6 +145,36 @@ export class Service{
     }
   }
 
+  // comment
+  async createComment({common, comment}){
+    try {
+      return await this.databases.createDocument(
+        conf.databaseId,
+        conf.commentId,
+        ID.unique(),
+        {
+          common,
+          comment
+        }
+      )
+    } catch (error) {
+      console.log("createComment error ", error);
+      return false;
+    }
+  }
+
+  async getComments(slug){
+    try {
+      return await this.databases.listDocuments(
+        conf.databaseId,
+        conf.commentId,
+        [Query.equal("common",[slug])]
+      )
+    } catch (error) {
+      console.log("getComments error ", error);
+      return false;
+    }
+  }
 
 }
 
